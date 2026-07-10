@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "d=$(cat); echo \"$d\" | jq -r '.tool_input.command // empty' | grep -qiE 'git([[:space:]]+-[^[:space:]]+)*[[:space:]]+push([[:space:]]|$)' && printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"git push esta prohibido en este repositorio por .claude/settings.json\"}}' || printf '{}'",
+            "statusMessage": "Verificando que no sea git push..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donar — VT Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">VT<span>Foundation</span></a>
+    <nav class="main-nav">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="index.html#que-hacemos">Qué hacemos</a>
+      <a href="index.html#impacto">Impacto</a>
+      <a href="index.html#app">La app</a>
+      <a href="index.html#historias">Historias</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="donar.html" class="btn btn-donate">Sumate</a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="donate-hero">
+    <div class="wrap">
+      <p class="eyebrow">sumate</p>
+      <h1>Tu aporte sostiene lo que hacemos</h1>
+      <p>Elegí a dónde va, cada cuánto y con qué método. Con poco alcanza para que alguien empiece a leer.</p>
+    </div>
+  </section>
+
+  <section class="donate-section">
+    <div class="wrap">
+      <form class="donate-card" id="donate-form" data-reveal novalidate>
+
+        <span class="donate-step">01 — ¿a dónde querés que vaya tu aporte?</span>
+        <div class="dest-toggle" role="group" aria-label="Destino de la donación">
+          <button type="button" class="dest-btn" data-dest="general" aria-pressed="true">
+            <span class="dest-title">La fundación</span>
+            <span class="dest-desc">Sostiene todos nuestros programas</span>
+          </button>
+          <button type="button" class="dest-btn" data-dest="app" aria-pressed="false">
+            <span class="dest-title">El desarrollo de la app</span>
+            <span class="dest-desc">Financia la app, fase por fase</span>
+          </button>
+        </div>
+
+        <span class="donate-step">02 — ¿cada cuánto querés ayudar?</span>
+        <div class="freq-toggle" role="group" aria-label="Frecuencia de la donación">
+          <button type="button" class="freq-btn" data-freq="once" aria-pressed="true">Una vez</button>
+          <button type="button" class="freq-btn" data-freq="monthly" aria-pressed="false">Mensual</button>
+        </div>
+        <p class="freq-hint">Con un aporte mensual nos ayudás a planificar. Cancelás cuando quieras.</p>
+
+        <span class="donate-step">03 — elegí un monto</span>
+        <div class="amount-grid" id="amount-grid">
+          <button type="button" class="amount-btn" data-amount="5">$5</button>
+          <button type="button" class="amount-btn" data-amount="15">$15</button>
+          <button type="button" class="amount-btn selected" data-amount="30">$30</button>
+          <button type="button" class="amount-btn" data-amount="50">$50</button>
+          <button type="button" class="amount-btn" data-amount="100">$100</button>
+          <button type="button" class="amount-btn other" data-amount="other">Otro monto</button>
+        </div>
+
+        <div id="custom-amount-wrap">
+          <input type="number" id="custom-amount" min="1" step="1" inputmode="decimal" placeholder="Escribí el monto" aria-label="Otro monto en dólares">
+        </div>
+
+        <p class="impact-line" id="impact-line"></p>
+
+        <span class="donate-step">04 — tu email <span style="text-transform:none;letter-spacing:0;color:#8a8578;">(opcional)</span></span>
+        <div class="field">
+          <label for="donor-email">Para mandarte el comprobante y contarte en qué anda tu aporte <span class="optional">— podés dejarlo en blanco</span></label>
+          <input type="email" id="donor-email" name="email" placeholder="tu@email.com" autocomplete="email">
+        </div>
+
+        <span class="donate-step">05 — elegí cómo pagar</span>
+        <div class="pay-methods">
+          <button type="button" class="pay-btn pay-paypal" data-method="paypal">
+            Donar <span class="pay-amt">$30</span>&nbsp;con PayPal
+          </button>
+          <button type="button" class="pay-btn pay-mp" data-method="mercadopago">
+            Donar <span class="pay-amt">$30</span>&nbsp;con Mercado Pago
+          </button>
+        </div>
+
+        <p class="donate-note">
+          Te llevamos al checkout seguro del método que elijas. No guardamos datos de tu tarjeta.<br>
+          Con PayPal podés pagar con tarjeta aunque no tengas cuenta.
+        </p>
+
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo">VT<span>Foundation</span></span>
+      <p>Alfabetización y formación vocacional para comunidades sin acceso a educación básica.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="X">x</a>
+      </div>
+    </div>
+    <p class="legal">VT Foundation no discrimina por raza, color, religión, género, orientación sexual, edad, origen nacional o discapacidad en la prestación de sus servicios.</p>
+    <p class="copyright">© 2026 VT Foundation. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="reveal.js"></script>
+<script src="impact.js"></script>
+<script src="donate.js"></script>
+</body>
+</html>

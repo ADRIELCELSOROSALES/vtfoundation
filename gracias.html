@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Gracias por tu donación! — VT Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">VT<span>Foundation</span></a>
+    <nav class="main-nav">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="index.html#que-hacemos">Qué hacemos</a>
+      <a href="index.html#impacto">Impacto</a>
+      <a href="index.html#app">La app</a>
+      <a href="index.html#historias">Historias</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="donar.html" class="btn btn-donate">Sumate</a>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="thanks-section">
+    <div class="wrap">
+      <div class="thanks-card">
+        <div class="thanks-check">✓</div>
+        <h1>¡Gracias por sumarte!</h1>
+        <p class="thanks-impact" id="thanks-impact">Tu donación sostiene el trabajo de la fundación.</p>
+        <p class="thanks-impact" id="thanks-detail" style="font-size:16px;"></p>
+        <p class="thanks-amount" id="thanks-amount"></p>
+        <div class="thanks-actions">
+          <a href="index.html#historias" class="btn btn-ghost">Leer historias reales</a>
+          <a href="index.html" class="btn btn-primary">Volver al inicio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo">VT<span>Foundation</span></span>
+      <p>Alfabetización y formación vocacional para comunidades sin acceso a educación básica.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="X">x</a>
+      </div>
+    </div>
+    <p class="legal">VT Foundation no discrimina por raza, color, religión, género, orientación sexual, edad, origen nacional o discapacidad en la prestación de sus servicios.</p>
+    <p class="copyright">© 2026 VT Foundation. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="impact.js"></script>
+<script>
+  // Recupera monto, frecuencia y destino del retorno de PayPal/MP (o del respaldo local).
+  const params = new URLSearchParams(window.location.search);
+  let amount = Number(params.get("amount"));
+  let freq = params.get("freq");
+  let destino = params.get("destino");
+
+  if (!amount) {
+    try {
+      const saved = JSON.parse(localStorage.getItem("vt_last_donation") || "{}");
+      amount = Number(saved.amount) || 0;
+      freq = freq || saved.freq;
+      destino = destino || saved.destino;
+    } catch (_) {}
+  }
+
+  // Mensaje principal según destino elegido.
+  document.getElementById("thanks-impact").innerHTML = destino === "app"
+    ? "Tu donación ayuda a financiar la <strong>Fase 1</strong> de la app: las primeras letras."
+    : "Tu donación sostiene los <strong>programas</strong> de la fundación.";
+
+  if (amount > 0) {
+    const suffix = freq === "monthly" ? " al mes" : "";
+    const verb = destino === "app" ? "ayudás a construir" : "hacés posible";
+    const impact = vtImpact(amount, destino);
+    if (impact) {
+      document.getElementById("thanks-detail").innerHTML = `Con tu aporte ${verb} ${impact}.`;
+    }
+    document.getElementById("thanks-amount").textContent =
+      `Tu aporte: $${amount}${suffix} USD`;
+    try { localStorage.removeItem("vt_last_donation"); } catch (_) {}
+  }
+</script>
+</body>
+</html>
