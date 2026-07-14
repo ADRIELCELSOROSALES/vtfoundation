@@ -1,19 +1,15 @@
 /* ------------------------------------------------------------------
-   Donación para financiar la app de alfabetización.
+   Donación general a VT Foundation.
    Flujo: frecuencia -> monto -> email (opcional) -> método de pago.
    Métodos: PayPal (internacional) y Mercado Pago (Argentina/región).
    Configurá tus datos aquí abajo.
 ------------------------------------------------------------------ */
 const CONFIG = {
   currency: "USD",
-  // Concepto que verá el donante en PayPal, según el destino elegido.
-  itemName: {
-    general: "Donación a VT Foundation — programas generales",
-    app: "Aporte a la app de alfabetización — VT Foundation (Fase 1)",
-  },
+  itemName: "Donación a VT Foundation",
 
   // --- PayPal (botón clásico, sin backend) ---
-  paypalBusinessEmail: "hola@vtfoundation.org",
+  paypalBusinessEmail: "info@vtfoundation.com",
   paypalSandbox: false, // true para pruebas
 
   // --- Mercado Pago ---
@@ -29,10 +25,9 @@ const PAYPAL_URL = CONFIG.paypalSandbox
   : "https://www.paypal.com/cgi-bin/webscr";
 
 // ---- estado ----
-const state = { destino: "general", freq: "once", amount: 30 }; // coincide con el HTML
+const state = { freq: "once", amount: 30 }; // coincide con el HTML
 
 // ---- elementos ----
-const destBtns    = document.querySelectorAll(".dest-btn");
 const freqBtns    = document.querySelectorAll(".freq-btn");
 const grid        = document.getElementById("amount-grid");
 const customWrap  = document.getElementById("custom-amount-wrap");
@@ -58,26 +53,10 @@ function refresh(){
   const amt = currentAmount();
   const label = amt > 0 ? `$${amt}${freqSuffix()}` : "—";
   payAmtEls.forEach(el => (el.textContent = label));
-  const verb = state.destino === "app" ? "ayudás a construir" : "hacés posible";
   impactLine.innerHTML = amt > 0
-    ? `Con $${amt}${freqSuffix()} ${verb} ${vtImpact(amt, state.destino)}.`
+    ? `Con $${amt}${freqSuffix()} hacés posible ${vtImpact(amt)}.`
     : "";
 }
-
-// ---- destino ----
-// Preselección desde ?destino=app|general (viene de los CTA de la home).
-const urlDest = new URLSearchParams(location.search).get("destino");
-if (urlDest === "app" || urlDest === "general") state.destino = urlDest;
-destBtns.forEach(b =>
-  b.setAttribute("aria-pressed", String(b.dataset.dest === state.destino))
-);
-destBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    state.destino = btn.dataset.dest;
-    destBtns.forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-    refresh();
-  });
-});
 
 // ---- frecuencia ----
 freqBtns.forEach(btn => {
@@ -124,13 +103,12 @@ function donate(method){
   // Guardamos el detalle para la pantalla de gracias (sobrevive la redirección).
   try {
     localStorage.setItem("vt_last_donation",
-      JSON.stringify({ amount, freq: state.freq, destino: state.destino }));
+      JSON.stringify({ amount, freq: state.freq }));
   } catch (_) {}
 
   const returnUrl = new URL("gracias.html", window.location.href);
   returnUrl.searchParams.set("amount", amount);
   returnUrl.searchParams.set("freq", state.freq);
-  returnUrl.searchParams.set("destino", state.destino);
 
   if (method === "mercadopago"){
     window.location.href = state.freq === "monthly"
@@ -156,7 +134,7 @@ function submitPayPal(amount, returnUrl){
     fields = {
       cmd: "_xclick-subscribe",
       business: CONFIG.paypalBusinessEmail,
-      item_name: CONFIG.itemName[state.destino],
+      item_name: CONFIG.itemName,
       currency_code: CONFIG.currency,
       a3: amount,   // importe por periodo
       p3: "1",      // cada 1
@@ -173,7 +151,7 @@ function submitPayPal(amount, returnUrl){
     fields = {
       cmd: "_donations",
       business: CONFIG.paypalBusinessEmail,
-      item_name: CONFIG.itemName[state.destino],
+      item_name: CONFIG.itemName,
       currency_code: CONFIG.currency,
       amount: amount,
       no_recurring: "1",

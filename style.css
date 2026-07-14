@@ -218,6 +218,23 @@ img{max-width:100%;}
 .read-more:hover{color:var(--text);}
 
 /* -------- IMPACTO -------- */
+.impact-media{margin-bottom:56px;}
+.impact-media img{
+  width:100%;
+  max-height:380px;
+  object-fit:cover;
+  border-radius:24px;
+  box-shadow:var(--shadow-md);
+  display:block;
+}
+.impact-media figcaption{
+  text-align:center;
+  margin-top:16px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:16px;
+  color:var(--text-2);
+}
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -437,6 +454,139 @@ img{max-width:100%;}
   border-radius:50%;
   object-fit:cover;
   flex-shrink:0;
+}
+
+/* -------- 5 PROGRAMAS (qué hacemos) -------- */
+.programs-grid{grid-template-columns:repeat(3,1fr);}
+
+/* -------- MISIÓN -------- */
+.mission-inner{max-width:900px; margin:0 auto; text-align:center;}
+.mission-inner .eyebrow{margin-bottom:22px;}
+.mission-statement{
+  font-family:var(--serif);
+  font-size:30px;
+  line-height:1.45;
+  color:var(--text);
+}
+
+/* -------- VALORES / IDENTIDAD (sobrio, con aire) -------- */
+.values{padding:130px 0;}
+.values-inner{max-width:760px; margin:0 auto; text-align:center;}
+.values-inner h2{margin-bottom:38px;}
+.values-list{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  gap:44px;
+  flex-wrap:wrap;
+  margin:0 0 46px;
+}
+.values-list li{
+  font-family:var(--serif);
+  font-size:23px;
+  color:var(--gold-deep);
+}
+.values-message{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:24px;
+  line-height:1.55;
+  color:var(--text);
+  max-width:640px;
+  margin:0 auto;
+}
+
+/* -------- BOARD OF DIRECTORS -------- */
+.board-title{font-size:24px; margin-bottom:30px; text-align:center;}
+.board-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.board-member{
+  background:#fff;
+  border-radius:20px;
+  padding:34px 26px;
+  box-shadow:var(--shadow-sm);
+  text-align:center;
+}
+.board-avatar{
+  width:82px; height:82px;
+  border-radius:50%;
+  margin:0 auto 20px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--bg-2);
+  border:1px solid var(--line);
+}
+.board-avatar svg{
+  width:40px; height:40px;
+  fill:none;
+  stroke:var(--blue);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.board-member h4{font-size:18px; margin-bottom:6px;}
+.board-role{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:12px;
+}
+.board-member p{font-size:14px; color:var(--text-2); line-height:1.6;}
+.about-note{
+  background:#fff;
+  border-radius:20px;
+  padding:34px 36px;
+  box-shadow:var(--shadow-sm);
+  text-align:center;
+  max-width:720px;
+  margin:0 auto;
+}
+.about-note h3{font-size:20px; margin-bottom:12px;}
+.about-note p{color:var(--text-2); line-height:1.7;}
+.about-note a{color:var(--gold-deep); font-weight:600;}
+.about-note a:hover{color:var(--text);}
+.about-note .eyebrow{margin-bottom:12px;}
+
+/* -------- JOIN US (newsletter) -------- */
+.join{text-align:center;}
+.join-form{
+  display:flex;
+  gap:12px;
+  max-width:540px;
+  margin:0 auto;
+}
+.join-form input[type="email"]{
+  flex:1;
+  min-width:0;
+  padding:15px 20px;
+  border:2px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  font-family:var(--sans);
+  font-size:15px;
+  color:var(--text);
+}
+.join-form input[type="email"]:focus{outline:none; border-color:var(--gold);}
+.join-form button{white-space:nowrap;}
+.join-note{margin-top:20px; font-size:14px; color:var(--text-2);}
+.join-note a{color:var(--gold-deep); font-weight:600;}
+.join-ok{
+  max-width:540px;
+  margin:0 auto;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:20px;
+  color:var(--text);
+}
+
+/* utilidades */
+.sr-only{
+  position:absolute;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
 }
 
 /* -------- DONACIÓN (invitación en home) -------- */
@@ -725,9 +875,17 @@ img{max-width:100%;}
   .card-grid{grid-template-columns:1fr;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .stories-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr; gap:32px; margin-bottom:48px;}
+  .board-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr; gap:32px;}
   .app-panel{padding:30px 22px;}
   .story-quote blockquote{font-size:22px;}
+  .mission-statement{font-size:24px;}
+  .values{padding:80px 0;}
+  .values-list{gap:6px; flex-direction:column;}
+  .values-message{font-size:20px;}
+  .join-form{flex-direction:column;}
+  .join-form button{width:100%;}
 }
 
 @media (max-width:760px){
