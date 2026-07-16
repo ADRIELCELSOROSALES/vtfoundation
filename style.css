@@ -476,6 +476,69 @@ img{max-width:100%;}
 .volunteer-form .field{margin-bottom:18px;}
 .volunteer-form button{width:100%; margin-top:6px;}
 .volunteer-single{max-width:560px; margin:0 auto;}
+
+/* -------- DESCARGAR LA APP -------- */
+.app-download{background:linear-gradient(165deg, #FFF6E4 0%, var(--bg-2) 100%);}
+.app-download-inner{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:60px;
+  align-items:center;
+}
+.app-download-media{display:flex; justify-content:center;}
+.phone{
+  position:relative;
+  width:236px; height:480px;
+  background:#1c1a17;
+  border-radius:40px;
+  padding:14px;
+  box-shadow:var(--shadow-lg);
+}
+.phone-notch{
+  position:absolute; top:14px; left:50%; transform:translateX(-50%);
+  width:92px; height:20px;
+  background:#1c1a17;
+  border-radius:0 0 14px 14px;
+  z-index:2;
+}
+.phone-screen{
+  height:100%;
+  border-radius:28px;
+  background:linear-gradient(165deg, #FFFDF8 0%, #EAF3F8 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; text-align:center; padding:26px;
+}
+.phone-logo{font-family:var(--serif); font-weight:700; font-size:25px; color:var(--text);}
+.phone-logo span{color:var(--gold-deep);}
+.phone-app-name{font-size:14px; color:var(--text-2); font-weight:600;}
+.phone-lines{display:flex; flex-direction:column; gap:9px; width:72%; margin:6px 0;}
+.phone-lines span{height:8px; border-radius:4px; background:rgba(46,42,36,0.12);}
+.phone-lines span:nth-child(2){width:82%;}
+.phone-lines span:nth-child(3){width:58%;}
+.phone-badge{
+  margin-top:6px;
+  font-size:12px; font-weight:600;
+  color:#fff; background:var(--blue-deep);
+  padding:6px 14px; border-radius:999px;
+}
+.app-download-text h2{font-size:34px; margin-bottom:16px;}
+.app-download-text > p{
+  font-size:17px; color:var(--text-2); line-height:1.65;
+  margin-bottom:26px; max-width:520px;
+}
+.app-features{
+  list-style:none;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px 20px;
+  margin:0 0 30px; max-width:480px;
+}
+.app-features li{font-size:15px; color:var(--text); font-weight:500;}
+.app-download-actions{margin-bottom:18px;}
+.app-download-help{
+  font-size:13.5px; color:var(--text-2);
+  line-height:1.55; max-width:520px;
+}
+.app-download-help a{color:var(--gold-deep); font-weight:600;}
 .volunteer-form button:disabled{opacity:.6; cursor:default;}
 .form-error{margin-top:14px; font-size:14px; color:#c0392b; line-height:1.5;}
 
@@ -991,6 +1054,8 @@ img.board-avatar{
   .stats-grid{grid-template-columns:repeat(2,1fr); gap:40px 24px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .involve-grid{grid-template-columns:1fr; gap:22px;}
+  .app-download-inner{grid-template-columns:1fr; gap:44px;}
+  .app-download-media{order:-1;}
 }
 
 @media (max-width:640px){
@@ -1014,6 +1079,7 @@ img.board-avatar{
   .about-grid{grid-template-columns:1fr; gap:32px; margin-bottom:48px;}
   .board-grid{grid-template-columns:1fr;}
   .contact-grid{grid-template-columns:1fr;}
+  .app-features{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr; gap:32px;}
   .app-panel{padding:30px 22px;}
   .mission-statement{font-size:24px;}
