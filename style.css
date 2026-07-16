@@ -475,6 +475,7 @@ img{max-width:100%;}
 
 .volunteer-form .field{margin-bottom:18px;}
 .volunteer-form button{width:100%; margin-top:6px;}
+.volunteer-single{max-width:560px; margin:0 auto;}
 .volunteer-form button:disabled{opacity:.6; cursor:default;}
 .form-error{margin-top:14px; font-size:14px; color:#c0392b; line-height:1.5;}
 

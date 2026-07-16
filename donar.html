@@ -19,7 +19,7 @@
       <a href="index.html#que-hacemos">Qué hacemos</a>
       <a href="index.html#valores">Valores</a>
       <a href="index.html#board">Board</a>
-      <a href="index.html#testimonios">Testimonios</a>
+      <a href="index.html#sumate">Sumate</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
     <a href="donar.html" class="btn btn-donate">Sumate</a>
@@ -89,6 +89,46 @@
     </div>
   </section>
 
+  <!-- VOLUNTARIADO -->
+  <section class="section involve alt" id="voluntariado">
+    <div class="wrap">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">voluntariado</p>
+        <h2>¿Preferís ayudar con tu tiempo?</h2>
+        <p class="section-lead">Si deseas ser voluntario/a en alfabetización de adultos, capacitación en habilidades para la vida, capacitación en habilidades laborales o capacitación en habilidades profesionales, completá el formulario a continuación.</p>
+      </div>
+
+      <div class="involve-card volunteer-single" data-reveal>
+        <form class="volunteer-form" id="volunteer-form" action="https://formspree.io/f/xpqvqelp" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Nuevo/a voluntario/a — VT Foundation">
+          <div class="field">
+            <label for="vol-name">Nombre y apellido</label>
+            <input type="text" id="vol-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="vol-email">Correo electrónico</label>
+            <input type="email" id="vol-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="vol-area">Área de interés</label>
+            <select id="vol-area" name="area" required>
+              <option value="" disabled selected>Elegí una opción</option>
+              <option>Alfabetización de adultos</option>
+              <option>Capacitación en habilidades para la vida</option>
+              <option>Capacitación en habilidades laborales</option>
+              <option>Capacitación en habilidades profesionales</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="vol-msg">Mensaje <span class="optional">(opcional)</span></label>
+            <textarea id="vol-msg" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Quiero ser voluntario/a</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -111,5 +151,6 @@
 <script src="reveal.js"></script>
 <script src="impact.js"></script>
 <script src="donate.js"></script>
+<script src="newsletter.js"></script>
 </body>
 </html>
